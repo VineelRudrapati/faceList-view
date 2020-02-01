@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">FaceList</string>
+    <string name="detect">Detect</string>
+    <string name="age">Age:</string>
+    <string name="gender">Gender:</string>
+    <string name="facial_hair">Facial Hair:</string>
+    <string name="smile">Smile:</string>
+    <string name="headpose">Headpose:</string>
+    <string name="todo">TODO</string>
+    <string name="subscription_key">56f5e09d973142b0b2d403f9c720d431</string>
+    <string name="endpoint">https://westcentralus.api.cognitive.microsoft.com/face/v1.0</string>
+    <string name="from_gallery">From Gallery</string>
+</resources>
