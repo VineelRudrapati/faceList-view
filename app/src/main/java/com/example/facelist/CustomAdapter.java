@@ -51,7 +51,6 @@ public class CustomAdapter extends BaseAdapter {
         textFacialHair=(TextView)view.findViewById(R.id.textFacialHair);
         textHeadpose=(TextView)view.findViewById(R.id.textHeadpose);
         textSmile=(TextView)view.findViewById(R.id.textSmile);
-
         imageView=(ImageView)view.findViewById(R.id.img1);
         textSmile.setText("Smile :"+face[position].faceAttributes.smile);
         textAge.setText("Age :"+face[position].faceAttributes.age);

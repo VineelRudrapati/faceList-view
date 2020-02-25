@@ -2,66 +2,69 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/img1"
-        android:scaleType="centerCrop"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:contentDescription="@string/todo" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_toEndOf="@+id/img1"
-        android:orientation="vertical"
-        android:weightSum="5">
-        <TextView
-            android:id="@+id/textAge"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="@string/age" />
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textGen"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="@string/gender" />
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="101dp"
+            android:layout_height="115dp"
+            android:contentDescription="@string/todo"
+            android:scaleType="centerCrop" />
 
-        <TextView
-            android:id="@+id/textFacialHair"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="@string/facial_hair" />
+        <LinearLayout
+            android:layout_width="313dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="-2dp"
+            android:layout_toEndOf="@+id/img1"
+            android:orientation="vertical"
+            android:weightSum="5">
 
-        <TextView
-            android:id="@+id/textSmile"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="@string/smile" />
+            <TextView
+                android:id="@+id/textAge"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/age" />
 
-        <TextView
-            android:id="@+id/textHeadpose"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="@string/headpose" />
+            <TextView
+                android:id="@+id/textGen"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/gender" />
+
+            <TextView
+                android:id="@+id/textFacialHair"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/facial_hair" />
+
+            <TextView
+                android:id="@+id/textSmile"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/smile" />
+
+            <TextView
+                android:id="@+id/textHeadpose"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/headpose" />
 
 
-    </LinearLayout>
+        </LinearLayout>
 
 
-</RelativeLayout>
+    </RelativeLayout>
 </RelativeLayout>

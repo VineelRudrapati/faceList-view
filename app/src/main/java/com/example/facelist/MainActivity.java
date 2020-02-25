@@ -1,13 +1,16 @@
 package com.example.facelist;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,7 +29,9 @@ import java.io.InputStream;
 public class MainActivity extends AppCompatActivity {
     ImageView imageView;
     Bitmap bitmap;
-    private FaceServiceClient faceServiceClient =new FaceServiceRestClient("https://westcentralus.api.cognitive.microsoft.com/face/v1.0","32abcd4c9a654605b55f4f26158a35bc");
+    Button gallery;
+    private  final int IMAGE=1;
+    private FaceServiceClient faceServiceClient =new FaceServiceRestClient("https://centralus.api.cognitive.microsoft.com/face/v1.0/","eed8954eee514c35b238b55a45077282");
     private ProgressDialog detectionProgressDialog;
 
     @Override
