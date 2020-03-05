@@ -35,7 +35,6 @@ public class YoutubeAds extends YouTubeBaseActivity {
                 Random rand = new Random();
                 int number=rand.nextInt((adlen-0)+1)+0;
                 youTubePlayer.loadVideo(wads.get(number));
-                youTubePlayer.addFullscreenControlFlag(YouTubePlayer.FULLSCREEN_FLAG_CONTROL_SYSTEM_UI);
             }
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {

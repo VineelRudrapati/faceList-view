@@ -10,19 +10,18 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.core.math.MathUtils;
-
 import com.microsoft.projectoxford.face.contract.Face;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 public class CustomAdapter extends BaseAdapter {
     private  Face[] face;
     private Context context;
     private LayoutInflater inflater;
     private Bitmap originalBitmap;
-
     public CustomAdapter(Face[] face, Context context, Bitmap originalBitmap) {
         this.face = face;
         this.context = context;
@@ -34,7 +33,6 @@ public class CustomAdapter extends BaseAdapter {
     public int getCount() {
         return face.length;
     }
-
     @Override
     public Object getItem(int position) {
         return face[position];
@@ -48,13 +46,19 @@ public class CustomAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view=convertView;
+        int faces_detected=face.length;
+        List<Integer> Ages=new ArrayList<Integer>();
+        List<String> Gender=new ArrayList<String>();
         double a;
         int sum=0;
-        int faces_detected= face.length;
+        int facesd= face.length;
         int male=0,female=0;
 
-        List<Integer> Ages=new ArrayList<Integer>();
-        List<String> Gender = new ArrayList<String>();
+
+        Log.d("these are age values",Ages.toString());
+        //Log.d("male are :",String.valueOf(male));
+        //Log.d("female are :",String.valueOf(female));
+        Log.d("faces detected",String.valueOf(facesd));
         if(convertView==null)
             view=inflater.inflate(R.layout.facelistview,null);
         TextView textAge,textGen,textFacialHair,textHeadpose,textSmile;
@@ -68,20 +72,18 @@ public class CustomAdapter extends BaseAdapter {
         textSmile.setText("Smile :"+face[position].faceAttributes.smile);
         textAge.setText("Age :"+face[position].faceAttributes.age);
         textGen.setText("Gender :"+face[position].faceAttributes.gender);
-        for(int j=0;j<faces_detected;j++) {
+        for(int j=0;j<faces_detected-1;j++) {
             Ages.add((int) face[position].faceAttributes.age);
-            Gender.add(face[position].faceAttributes.gender);
         }
         for(int i:Ages)
         {
             sum=sum+i;
         }
-        Log.d("this is sum of ages", String.valueOf(sum));
+        Log.d("sum of ages",String.valueOf(sum));
         textFacialHair.setText(String.format("Facial Hair : %f %f %f",face[position].faceAttributes.facialHair.moustache, face[position].faceAttributes.facialHair.sideburns,face[position].faceAttributes.facialHair.beard));
         textHeadpose.setText(String.format("HeadPose : %f %f %f",face[position].faceAttributes.headPose.pitch, face[position].faceAttributes.headPose.roll,face[position].faceAttributes.headPose.yaw));
-    Bitmap bitmap=ImageHelper.generateThumbnail(originalBitmap,face[position].faceRectangle);
-    imageView.setImageBitmap(bitmap);
-    return view;
-
+        Bitmap bitmap=ImageHelper.generateThumbnail(originalBitmap,face[position].faceRectangle);
+        imageView.setImageBitmap(bitmap);
+        return view;
     }
 }
