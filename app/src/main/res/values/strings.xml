@@ -10,4 +10,5 @@
     <string name="subscription_key">cddd555561a64adf8342ae934e9c3f79</string>
     <string name="endpoint">https://vineelmathew.cognitiveservices.azure.com/</string>
     <string name="from_gallery">From Gallery</string>
+    <string name="play_video">play_video</string>
 </resources>

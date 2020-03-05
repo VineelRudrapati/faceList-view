@@ -10,7 +10,9 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,8 +25,11 @@ import com.microsoft.projectoxford.face.rest.ClientException;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 
 public class MainActivity extends AppCompatActivity {
     ImageView imageView;
@@ -33,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private  final int IMAGE=1;
     private FaceServiceClient faceServiceClient =new FaceServiceRestClient("https://centralus.api.cognitive.microsoft.com/face/v1.0/","eed8954eee514c35b238b55a45077282");
     private ProgressDialog detectionProgressDialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,13 +46,40 @@ public class MainActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.img);
         imageView.setImageBitmap(bitmap);
         Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        gallery=(Button)findViewById(R.id.button2);
+       button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 detectAndFrame(bitmap);
             }
         });
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent,"Select the picture"),IMAGE);
+            }
+        });
         detectionProgressDialog=new ProgressDialog(this);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == IMAGE && resultCode == RESULT_OK &&
+                data != null && data.getData() != null) {
+            Uri uri=data.getData();
+            try
+            {
+                Bitmap bitmap=MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+                imageView.setImageBitmap(bitmap);
+                detectAndFrame(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
     private void detectAndFrame(Bitmap bitmap) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
