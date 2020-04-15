@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".YoutubeAds"></activity>
+        <activity android:name=".something"></activity>
+        <activity android:name=".YoutubeAds" />
         <activity android:name=".ResultActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

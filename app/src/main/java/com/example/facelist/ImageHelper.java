@@ -35,5 +35,4 @@ public class ImageHelper {
         FaceRectangle face=CalculateFaceRectangle(originalBitmap,faceRectangle,1.3);
         return Bitmap.createBitmap(originalBitmap,faceRectangle.left,faceRectangle.top,faceRectangle.width,faceRectangle.height);
     }
-
 }
